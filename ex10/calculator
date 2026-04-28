@@ -1,0 +1,21 @@
+
+(defun calc (a b op)
+  (cond
+    ((= op 1) (+ a b))
+    ((= op 2) (- a b))
+    ((= op 3) (* a b))
+    ((= op 4) (if (/= b 0) (/ a b) "Cannot divide by zero"))
+    (t "Invalid")))
+
+(defun run-calculator ()
+  (format t "Enter First Number: ")
+  (finish-output)
+  (let ((n1 (read)))
+    (format t "Enter Second Number: ")
+    (finish-output)
+    (let ((n2 (read)))
+      (format t "Enter Choice (1-Add, 2-Sub, 3-Mul, 4-Div): ")
+      (finish-output)
+      (let ((choice (read)))
+        (format t "Result: ~a~%" (calc n1 n2 choice)))))
+  (values))
