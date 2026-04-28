@@ -1,0 +1,27 @@
+
+(defun my-length (str)
+  (if (string= str "")
+      0
+      (+ 1 (my-length (subseq str 1)))))
+
+(defun my-reverse (str)
+  (if (string= str "")
+      ""
+      (concatenate 'string
+        (my-reverse (subseq str 1))
+        (subseq str 0 1))))
+
+(defun count-vowels (str)
+  (if (string= str "")
+      0
+      (+ (if (member (char (string-downcase str) 0) '(#\a #\e #\i #\o #\u)) 1 0)
+         (count-vowels (subseq str 1)))))
+
+(defun run-string-ops ()
+  (format t "Enter a string: ")
+  (finish-output)
+  (let ((s (read-line)))
+    (format t "Length: ~a~%" (my-length s))
+    (format t "Reverse: ~a~%" (my-reverse s))
+    (format t "Vowels: ~a~%" (count-vowels s))
+(values)))
