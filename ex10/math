@@ -1,0 +1,27 @@
+
+(defun my-gcd (a b)
+  (if (= b 0)
+      a
+      (my-gcd b (mod a b))))
+
+(defun my-lcm (a b)
+  (/ (* a b) (my-gcd a b)))
+
+(defun area (l w) (* l w))
+(defun perimeter (l w) (* 2 (+ l w)))
+
+(defun run-math-ops ()
+  (format t "Enter two numbers for GCD/LCM: ")
+  (finish-output)
+  (let* ((val1 (read))
+         (val2 (read)))
+    (format t "GCD: ~a~%" (my-gcd val1 val2))
+    (format t "LCM: ~a~%" (my-lcm val1 val2)))
+
+  (format t "~%Enter Length and Width: ")
+  (finish-output)
+  (let* ((l (read))
+         (w (read)))
+    (format t "Area: ~a~%" (area l w))
+    (format t "Perimeter: ~a~%" (perimeter l w)))
+  (values))
